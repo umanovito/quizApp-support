@@ -1,53 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz App Support</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: white;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 12px;
-    }
-    h1 {
-      color: #1a73e8;
-    }
-    a {
-      color: #1a73e8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master - Support</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #f8f9fa;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #121212 0%, #252525 100%);
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #1E1E1E;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .card-icon {
+            background: linear-gradient(135deg, #3FFF2E 0%, #2db91d 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .support-section {
+            background-color: #1E1E1E;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .neon-text {
+            color: #3FFF2E;
+        }
+        .neon-button {
+            background-color: #3FFF2E;
+            color: #121212;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .neon-button:hover {
+            background-color: #29C318;
+            box-shadow: 0 0 15px rgba(63, 255, 46, 0.5);
+        }
+        .outline-button {
+            border: 2px solid #3FFF2E;
+            color: #3FFF2E;
+            transition: all 0.3s ease;
+        }
+        .outline-button:hover {
+            background-color: #3FFF2E;
+            color: #121212;
+        }
+        .dark-input {
+            background-color: #2A2A2A;
+            border: 1px solid #444;
+            color: #FFF;
+        }
+        .dark-input:focus {
+            background-color: #333;
+            border-color: #3FFF2E;
+            outline: none;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Support Page</h1>
-    <p>Thanks for using our quiz app! If you have any questions, issues, or feedback, feel free to reach out:</p>
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold">Quiz <span class="neon-text">Master</span></h1>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#features" class="hover:text-green-400 transition duration-300">Features</a>
+                    <a href="#faq" class="hover:text-green-400 transition duration-300">FAQ</a>
+                    <a href="#contact" class="hover:text-green-400 transition duration-300">Contact</a>
+                </nav>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <h3>Contact Support</h3>
-    <ul>
-      <li>Email: <a href="mailto:support@yourappname.com">support@yourappname.com</a></li>
-      <li>Telegram: <a href="https://t.me/yourchannel" target="_blank">@yourchannel</a></li>
-    </ul>
+    <!-- Banner -->
+    <div class="w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" class="w-full">
+            <!-- Background -->
+            <rect width="1200" height="600" fill="#121212"/>
+            
+            <!-- Green accent shapes -->
+            <polygon points="0,0 200,0 0,200" fill="#3FFF2E" opacity="0.7"/>
+            <polygon points="1200,600 1000,600 1200,400" fill="#3FFF2E" opacity="0.7"/>
+            <circle cx="950" cy="100" r="70" fill="#3FFF2E" opacity="0.5"/>
+            <polygon points="300,500 380,580 220,580" fill="#3FFF2E" opacity="0.6"/>
+            
+            <!-- Star shapes -->
+            <polygon points="850,150 870,190 920,190 880,220 900,270 850,240 800,270 820,220 780,190 830,190" fill="#3FFF2E" opacity="0.8"/>
+            <polygon points="150,350 170,390 220,390 180,420 200,470 150,440 100,470 120,420 80,390 130,390" fill="#3FFF2E" opacity="0.8"/>
+            
+            <!-- Phone mockups -->
+            <g transform="translate(230, 170) scale(0.9)">
+                <!-- Phone outline -->
+                <rect x="0" y="0" width="220" height="440" rx="30" ry="30" fill="#1A1A1A" stroke="#333" stroke-width="2"/>
+                <!-- Phone screen -->
+                <rect x="10" y="10" width="200" height="420" rx="20" ry="20" fill="#121212"/>
+                <!-- UI Elements -->
+                <rect x="30" y="50" width="140" height="40" rx="5" ry="5" fill="#222"/>
+                <text x="100" y="75" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Daily Quiz</text>
+                
+                <!-- Quiz question -->
+                <rect x="30" y="110" width="140" height="80" rx="5" ry="5" fill="#222"/>
+                <text x="100" y="145" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">What is the capital</text>
+                <text x="100" y="165" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">of Australia?</text>
+                
+                <!-- Quiz answers -->
+                <rect x="30" y="210" width="140" height="30" rx="15" ry="15" fill="#222"/>
+                <text x="100" y="230" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Sydney</text>
+                
+                <rect x="30" y="250" width="140" height="30" rx="15" ry="15" fill="#3FFF2E"/>
+                <text x="100" y="270" font-family="Arial, sans-serif" font-size="12" fill="#121212" font-weight="bold" text-anchor="middle">Canberra</text>
+                
+                <rect x="30" y="290" width="140" height="30" rx="15" ry="15" fill="#222"/>
+                <text x="100" y="310" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Melbourne</text>
+                
+                <rect x="30" y="330" width="140" height="30" rx="15" ry="15" fill="#222"/>
+                <text x="100" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Perth</text>
+            </g>
+            
+            <g transform="translate(750, 170) scale(0.9)">
+                <!-- Phone outline -->
+                <rect x="0" y="0" width="220" height="440" rx="30" ry="30" fill="#1A1A1A" stroke="#333" stroke-width="2"/>
+                <!-- Phone screen -->
+                <rect x="10" y="10" width="200" height="420" rx="20" ry="20" fill="#121212"/>
+                <!-- UI Elements -->
+                <rect x="30" y="50" width="140" height="40" rx="5" ry="5" fill="#222"/>
+                <text x="100" y="75" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Leaderboard</text>
+                
+                <!-- Podium layout centered better -->
+                <rect x="35" y="180" width="40" height="60" rx="3" ry="3" fill="#444"/>
+                <text x="55" y="210" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">2</text>
+                
+                <rect x="85" y="140" width="40" height="100" rx="3" ry="3" fill="#3FFF2E"/>
+                <text x="105" y="190" font-family="Arial, sans-serif" font-size="18" fill="#121212" font-weight="bold" text-anchor="middle">1</text>
+                
+                <rect x="135" y="200" width="40" height="40" rx="3" ry="3" fill="#555"/>
+                <text x="155" y="225" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">3</text>
+                
+                <!-- Player entries -->
+                <g transform="translate(20, 270)">
+                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
+                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.8"/>
+                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">John Smith</text>
+                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">185 pts</text>
+                </g>
+                
+                <g transform="translate(20, 310)">
+                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
+                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.6"/>
+                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">Jane Doe</text>
+                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">143 pts</text>
+                </g>
+                
+                <g transform="translate(20, 350)">
+                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
+                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.4"/>
+                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">Alex Brown</text>
+                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">92 pts</text>
+                </g>
+            </g>
+            
+            <!-- Main Text - Fixed positioning -->
+            <text x="600" y="90" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="white" text-anchor="middle">QUIZ MASTER</text>
+            
+            <!-- Breaking the tagline into multiple lines with more space between them -->
+            <text x="600" y="490" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Test your knowledge.</text>
+            <text x="600" y="525" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Level up.</text>
+            <text x="600" y="560" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Compete.</text>
+        </svg>
+    </div>
 
-    <h3>FAQs</h3>
-    <p><strong>Q: How do I unlock new quizzes?</strong><br>
-    A: You can use stars earned in-game or purchase them to unlock new content.</p>
+    <!-- App Overview -->
+    <section class="py-16 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-6">Your Journey to Knowledge</h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Quiz Master is a comprehensive quiz application designed to challenge your knowledge, track your progress, and compete with others across various topics. With multiple quiz categories, difficulty levels, and daily challenges, there's always something new to explore and learn.
+                    </p>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        Our app features a robust progression system, allowing you to level up as you complete more quizzes, and leaderboards to showcase your achievements to the world.
+                    </p>
+                    <div class="flex flex-wrap">
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>Multiple Categories</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>Daily Challenges</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>Leaderboards</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>Level Progression</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>User Profiles</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle neon-text mr-2"></i>
+                                <span>Multiple Login Methods</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-black p-6 rounded-lg shadow-xl border border-gray-800">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full bg-red-500 mr-2"></div>
+                                <div class="h-3 w-3 rounded-full bg-yellow-500 mr-2"></div>
+                                <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="text-xs text-gray-500">Quiz Master App</div>
+                        </div>
+                        <div class="text-green-400 font-mono text-sm mb-2">$ launching quiz master...</div>
+                        <div class="text-white font-mono text-sm mb-2">Welcome to Quiz Master - Your Knowledge Adventure!</div>
+                        <div class="text-white font-mono text-sm mb-2">Loading categories...</div>
+                        <div class="text-white font-mono text-sm mb-4">
+                            <span class="text-green-400">✓</span> Science & Technology<br>
+                            <span class="text-green-400">✓</span> History & Culture<br>
+                            <span class="text-green-400">✓</span> Arts & Literature<br>
+                            <span class="text-green-400">✓</span> Sports & Games<br>
+                            <span class="text-green-400">✓</span> Geography & Nature<br>
+                            <span class="text-green-400">✓</span> Entertainment & Pop Culture
+                        </div>
+                        <div class="text-green-400 font-mono text-sm">System ready! Start your quiz journey now.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p><strong>Q: I lost progress. Can I restore it?</strong><br>
-    A: Make sure you're logged in with the same account (Google/Apple). Progress is tied to your account.</p>
+    <!-- Features -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-2 text-center">App Features</h2>
+            <p class="text-gray-400 mb-12 text-center max-w-2xl mx-auto">Explore the comprehensive features that make Quiz Master the perfect app for testing and expanding your knowledge.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Multiple Authentication Methods</h3>
+                    <p class="text-gray-400">
+                        Sign in with your email, Google, Apple, or Facebook account. Your choice, your convenience.
+                    </p>
+                </div>
 
-    <p>Need more help? <a href="mailto:umanovito@gmail.com">Email us directly</a>.</p>
-  </div>
+                <!-- Feature 2 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-question-circle text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Diverse Quiz Categories</h3>
+                    <p class="text-gray-400">
+                        Explore quizzes across multiple topics and difficulty levels to challenge yourself.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Competitive Leaderboards</h3>
+                    <p class="text-gray-400">
+                        Compare your performance with others on daily, weekly, monthly, and all-time leaderboards.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-circle text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Personalized Profiles</h3>
+                    <p class="text-gray-400">
+                        Customize your profile, upload a personal avatar, and track your statistics.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-level-up-alt text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Level Progression System</h3>
+                    <p class="text-gray-400">
+                        Level up as you complete more quizzes, unlocking new achievements along the way.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-day text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Daily Challenges</h3>
+                    <p class="text-gray-400">
+                        Take on new daily quizzes to maintain your streak and earn bonus points.
+                    </p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-history text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">History Tracking</h3>
+                    <p class="text-gray-400">
+                        Review your past quiz attempts, scores, and progress over time.
+                    </p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-random text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Random Quiz Suggestions</h3>
+                    <p class="text-gray-400">
+                        Discover new topics with our random quiz suggestion feature.
+                    </p>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="rounded-lg shadow-md p-6 feature-card">
+                    <div class="card-icon">
+                        <i class="fas fa-crown text-black text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Premium Subscription</h3>
+                    <p class="text-gray-400">
+                        Access exclusive content and features with our Premium subscription option.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 gradient-bg">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-2 text-center">Frequently Asked Questions</h2>
+            <p class="text-gray-400 mb-12 text-center max-w-2xl mx-auto">Find answers to common questions about Quiz Master.</p>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">How do I create an account?</h3>
+                    <p class="text-gray-400">
+                        You can create an account using your email, or sign in with your Google, Apple, or Facebook account. Choose the option that's most convenient for you during the sign-up process.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">How does the scoring system work?</h3>
+                    <p class="text-gray-400">
+                        Your score is based on the number of correct answers, the difficulty level of the quiz, and how quickly you complete it. Maintaining a daily streak also gives you bonus points on the leaderboards.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">How do I upgrade to Premium?</h3>
+                    <p class="text-gray-400">
+                        You can upgrade to Premium from the profile section. We offer various subscription options. All purchases are processed through Apple's App Store.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">Can I restore my purchases?</h3>
+                    <p class="text-gray-400">
+                        Yes, if you've previously subscribed to Premium, you can restore your purchase. Go to the profile section, select "Restore Purchases," and follow the prompts.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">How do I change my profile picture?</h3>
+                    <p class="text-gray-400">
+                        Go to your profile, tap on your current avatar, and select "Change Profile Picture." You can upload a new image from your device's gallery.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="support-section p-6">
+                    <h3 class="text-xl font-semibold mb-2">What happens if I miss a day in my streak?</h3>
+                    <p class="text-gray-400">
+                        If you miss a day, your streak will reset. However, all your accumulated points and achievements remain. You can start building a new streak the next day.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-2 text-center">Contact Support</h2>
+            <p class="mb-12 text-center max-w-2xl mx-auto text-gray-400">Need additional help? Our support team is ready to assist you.</p>
+            
+            <div class="max-w-3xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-envelope neon-text mr-3 text-xl"></i>
+                        <span>support@quizmaster.app</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-globe neon-text mr-3 text-xl"></i>
+                        <span>www.quizmaster.app</span>
+                    </div>
+                </div>
+                
+                <form>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="name">
+                                Name
+                            </label>
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="name" type="text" placeholder="Your Name">
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="email">
+                                Email
+                            </label>
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 leading-tight focus:outline-none" id="email" type="email" placeholder="Your Email">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="subject">
+                                Subject
+                            </label>
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="subject" type="text" placeholder="Support Request Subject">
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="message">
+                                Message
+                            </label>
+                            <textarea class="no-resize appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none h-48 resize-none" id="message" placeholder="Your Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center">
+                        <button class="neon-button shadow focus:shadow-outline focus:outline-none font-bold py-3 px-6 rounded" type="button">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">Quiz <span class="neon-text">Master</span></h3>
+                    <p class="text-gray-400">Your Knowledge Adventure</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-green-400 transition duration-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-400 transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-green-400 transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <hr class="border-gray-800 my-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Quiz Master. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-green-400 text-sm transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-green-400 text-sm transition duration-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
