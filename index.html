@@ -12,6 +12,7 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #121212;
             color: #f8f9fa;
+            padding-top: 64px; /* Added padding for fixed header */
         }
         .gradient-bg {
             background: linear-gradient(135deg, #121212 0%, #252525 100%);
@@ -71,11 +72,30 @@
             border-color: #3FFF2E;
             outline: none;
         }
+        /* Fixed header styles */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        /* Success message for contact form */
+        .success-message {
+            display: none;
+            background-color: rgba(63, 255, 46, 0.2);
+            border: 1px solid #3FFF2E;
+            color: #3FFF2E;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="gradient-bg text-white py-8">
+    <!-- Fixed Header -->
+    <header class="gradient-bg text-white py-4 fixed-header">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold">Quiz <span class="neon-text">Master</span></h1>
@@ -84,108 +104,23 @@
                     <a href="#faq" class="hover:text-green-400 transition duration-300">FAQ</a>
                     <a href="#contact" class="hover:text-green-400 transition duration-300">Contact</a>
                 </nav>
-                <button class="md:hidden focus:outline-none">
+                <button class="md:hidden focus:outline-none" id="menuButton">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
+            </div>
+            <!-- Mobile menu - hidden by default -->
+            <div id="mobileMenu" class="hidden mt-4 md:hidden">
+                <a href="#features" class="block py-2 hover:text-green-400 transition duration-300">Features</a>
+                <a href="#faq" class="block py-2 hover:text-green-400 transition duration-300">FAQ</a>
+                <a href="#contact" class="block py-2 hover:text-green-400 transition duration-300">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Banner -->
     <div class="w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" class="w-full">
-            <!-- Background -->
-            <rect width="1200" height="600" fill="#121212"/>
-            
-            <!-- Green accent shapes -->
-            <polygon points="0,0 200,0 0,200" fill="#3FFF2E" opacity="0.7"/>
-            <polygon points="1200,600 1000,600 1200,400" fill="#3FFF2E" opacity="0.7"/>
-            <circle cx="950" cy="100" r="70" fill="#3FFF2E" opacity="0.5"/>
-            <polygon points="300,500 380,580 220,580" fill="#3FFF2E" opacity="0.6"/>
-            
-            <!-- Star shapes -->
-            <polygon points="850,150 870,190 920,190 880,220 900,270 850,240 800,270 820,220 780,190 830,190" fill="#3FFF2E" opacity="0.8"/>
-            <polygon points="150,350 170,390 220,390 180,420 200,470 150,440 100,470 120,420 80,390 130,390" fill="#3FFF2E" opacity="0.8"/>
-            
-            <!-- Phone mockups -->
-            <g transform="translate(230, 170) scale(0.9)">
-                <!-- Phone outline -->
-                <rect x="0" y="0" width="220" height="440" rx="30" ry="30" fill="#1A1A1A" stroke="#333" stroke-width="2"/>
-                <!-- Phone screen -->
-                <rect x="10" y="10" width="200" height="420" rx="20" ry="20" fill="#121212"/>
-                <!-- UI Elements -->
-                <rect x="30" y="50" width="140" height="40" rx="5" ry="5" fill="#222"/>
-                <text x="100" y="75" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Daily Quiz</text>
-                
-                <!-- Quiz question -->
-                <rect x="30" y="110" width="140" height="80" rx="5" ry="5" fill="#222"/>
-                <text x="100" y="145" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">What is the capital</text>
-                <text x="100" y="165" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">of Australia?</text>
-                
-                <!-- Quiz answers -->
-                <rect x="30" y="210" width="140" height="30" rx="15" ry="15" fill="#222"/>
-                <text x="100" y="230" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Sydney</text>
-                
-                <rect x="30" y="250" width="140" height="30" rx="15" ry="15" fill="#3FFF2E"/>
-                <text x="100" y="270" font-family="Arial, sans-serif" font-size="12" fill="#121212" font-weight="bold" text-anchor="middle">Canberra</text>
-                
-                <rect x="30" y="290" width="140" height="30" rx="15" ry="15" fill="#222"/>
-                <text x="100" y="310" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Melbourne</text>
-                
-                <rect x="30" y="330" width="140" height="30" rx="15" ry="15" fill="#222"/>
-                <text x="100" y="350" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Perth</text>
-            </g>
-            
-            <g transform="translate(750, 170) scale(0.9)">
-                <!-- Phone outline -->
-                <rect x="0" y="0" width="220" height="440" rx="30" ry="30" fill="#1A1A1A" stroke="#333" stroke-width="2"/>
-                <!-- Phone screen -->
-                <rect x="10" y="10" width="200" height="420" rx="20" ry="20" fill="#121212"/>
-                <!-- UI Elements -->
-                <rect x="30" y="50" width="140" height="40" rx="5" ry="5" fill="#222"/>
-                <text x="100" y="75" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Leaderboard</text>
-                
-                <!-- Podium layout centered better -->
-                <rect x="35" y="180" width="40" height="60" rx="3" ry="3" fill="#444"/>
-                <text x="55" y="210" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">2</text>
-                
-                <rect x="85" y="140" width="40" height="100" rx="3" ry="3" fill="#3FFF2E"/>
-                <text x="105" y="190" font-family="Arial, sans-serif" font-size="18" fill="#121212" font-weight="bold" text-anchor="middle">1</text>
-                
-                <rect x="135" y="200" width="40" height="40" rx="3" ry="3" fill="#555"/>
-                <text x="155" y="225" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">3</text>
-                
-                <!-- Player entries -->
-                <g transform="translate(20, 270)">
-                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
-                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.8"/>
-                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">John Smith</text>
-                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">185 pts</text>
-                </g>
-                
-                <g transform="translate(20, 310)">
-                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
-                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.6"/>
-                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">Jane Doe</text>
-                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">143 pts</text>
-                </g>
-                
-                <g transform="translate(20, 350)">
-                    <rect x="10" y="0" width="140" height="30" rx="3" ry="3" fill="#222"/>
-                    <circle cx="25" cy="15" r="10" fill="#3FFF2E" opacity="0.4"/>
-                    <text x="60" y="20" font-family="Arial, sans-serif" font-size="12" fill="white">Alex Brown</text>
-                    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" fill="#3FFF2E" text-anchor="end">92 pts</text>
-                </g>
-            </g>
-            
-            <!-- Main Text - Fixed positioning -->
-            <text x="600" y="90" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="white" text-anchor="middle">QUIZ MASTER</text>
-            
-            <!-- Breaking the tagline into multiple lines with more space between them -->
-            <text x="600" y="490" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Test your knowledge.</text>
-            <text x="600" y="525" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Level up.</text>
-            <text x="600" y="560" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3FFF2E" text-anchor="middle">Compete.</text>
-        </svg>
+        <!-- Using image tag instead of SVG for leaderboard section -->
+        <img src="https://i.imgur.com/RK3wVMQ.png" alt="Quiz Master Banner" class="w-full" style="max-height: 600px; object-fit: cover;">
     </div>
 
     <!-- App Overview -->
@@ -453,19 +388,19 @@
                     </div>
                 </div>
                 
-                <form>
+                <form id="contactForm">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="name">
                                 Name
                             </label>
-                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="name" type="text" placeholder="Your Name">
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="name" type="text" placeholder="Your Name" required>
                         </div>
                         <div class="w-full md:w-1/2 px-3">
                             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 leading-tight focus:outline-none" id="email" type="email" placeholder="Your Email">
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 leading-tight focus:outline-none" id="email" type="email" placeholder="Your Email" required>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -473,7 +408,7 @@
                             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="subject">
                                 Subject
                             </label>
-                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="subject" type="text" placeholder="Support Request Subject">
+                            <input class="appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none" id="subject" type="text" placeholder="Support Request Subject" required>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -481,13 +416,16 @@
                             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="message">
                                 Message
                             </label>
-                            <textarea class="no-resize appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none h-48 resize-none" id="message" placeholder="Your Message"></textarea>
+                            <textarea class="no-resize appearance-none block w-full dark-input rounded py-3 px-4 mb-3 leading-tight focus:outline-none h-48 resize-none" id="message" placeholder="Your Message" required></textarea>
                         </div>
                     </div>
                     <div class="md:flex md:items-center">
-                        <button class="neon-button shadow focus:shadow-outline focus:outline-none font-bold py-3 px-6 rounded" type="button">
+                        <button id="submitButton" class="neon-button shadow focus:shadow-outline focus:outline-none font-bold py-3 px-6 rounded" type="submit">
                             Send Message
                         </button>
+                    </div>
+                    <div id="successMessage" class="success-message mt-4">
+                        <p>Thank you for your message! Our support team will get back to you soon.</p>
                     </div>
                 </form>
             </div>
@@ -524,5 +462,58 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For now, we'll just show a success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Calculate position with offset for fixed header
+                    const headerHeight = document.querySelector('.fixed-header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
