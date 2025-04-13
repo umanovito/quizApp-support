@@ -465,48 +465,60 @@
         });
 
         // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitButton = document.getElementById('submitButton');
+    const successMessage = document.getElementById('successMessage');
+    const originalButtonText = submitButton.innerHTML;
+    
+    // Собираем данные формы
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+    
+    // Изменяем текст кнопки на время отправки
+    submitButton.innerHTML = 'Sending...';
+    submitButton.disabled = true;
+    
+    // Отправляем запрос на ваш бэкенд
+    fetch('https://seashell-app-c6r3f.ondigitalocean.app/contact/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Показываем сообщение об успехе
+            successMessage.style.display = 'block';
             
-            // Here you would typically send the form data to your server
-            // For now, we'll just show a success message
-            document.getElementById('successMessage').style.display = 'block';
+            // Очищаем форму
+            document.getElementById('contactForm').reset();
             
-            // Reset form
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('subject').value = '';
-            document.getElementById('message').value = '';
-            
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('successMessage').style.display = 'none';
+            // Скрываем сообщение через 5 секунд
+            setTimeout(() => {
+                successMessage.style.display = 'none';
             }, 5000);
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    // Calculate position with offset for fixed header
-                    const headerHeight = document.querySelector('.fixed-header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    document.getElementById('mobileMenu').classList.add('hidden');
-                }
-            });
-        });
+        } else {
+            throw new Error(data.error || 'Failed to send message');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later or contact us directly at umanovito@gmail.com');
+    })
+    .finally(() => {
+        // Возвращаем исходный текст кнопки
+        submitButton.innerHTML = originalButtonText;
+        submitButton.disabled = false;
+    });
+});
     </script>
 </body>
 </html>
